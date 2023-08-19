@@ -9,8 +9,8 @@ await connectDb();
 app.use(cors());
 
 app.use(express.json());
-app.use("/kp/questions", require("./routes/quesroutes"));
 app.use("/kp/users", require("./routes/userroutes"));
+app.use("/kp/chat", require("./routes/chatRoutes"));
 app.use(errorhandler);
 
 app.listen(port, () => {

@@ -7,7 +7,7 @@ const {
   logout,
   update_profile
 } = require("../controllers/usercontroller");
-const validatetoken = require("../middleware/accesstokenhandler2");
+const validatetoken = require("../middleware/accesstokenhandler");
 
 router.post("/register", register);
 
