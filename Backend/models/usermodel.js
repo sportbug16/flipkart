@@ -16,7 +16,19 @@ const UserSchema = mongoose.Schema(
       },
         preferences: {
             type: String
-        }
+        },
+        age: {
+          type: Number,
+            required: [true, "Please add age"]
+        },
+        location: {
+          type: String,
+            required: [true, "Please add location"]
+        },
+        gender: {
+          type: String,
+            required: [true, "Please add gender"]
+        },
     },
     {
         collection: "users",

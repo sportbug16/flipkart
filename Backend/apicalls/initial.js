@@ -14,6 +14,14 @@ const sample_prompt3="looking for an outfit for my friend's bachelor party\nage 
 const sample_res3="Top: A trendy and stylish sequined crop top with a plunging neckline, adding a touch of glamour and allure to your look for the bachelor party.\n\nBottom: Pair the crop top with high-waisted leather pants or faux leather leggings, creating a chic and edgy vibe for the occasion.\n\nFootwear: Opt for black stiletto heels or ankle boots with metallic accents, elevating your outfit while providing comfort as you dance the night away.\n\nAccessories:\n\nLayered chain necklaces in gold or silver, adding an element of sophistication to your ensemble.\nStatement hoop earrings in a bold design or color to complement your outfit.\nA sleek wristwatch with metallic tones, adding a touch of elegance and keeping you on schedule throughout the event.\nMakeup: Create bold smoky eyes using shimmering eyeshadows in dark hues like charcoal gray or deep plum. Pair it with winged eyeliner and dramatic false lashes. Finish off with a nude lip color that enhances your natural beauty.\n\n\nBag: Carry a small clutch bag in metallic tones like silver or rose gold. Choose one that can hold essential items such as phone, keys, and lipstick while effortlessly complementing your outfit.";
 const sample_updatereq3="i would like a skirt at the bottom";
 const update_res3="Top: A trendy and chic off-shoulder crop top in a vibrant color like hot pink or electric blue, adding a playful and fun element to your bachelor party outfit.\n\nBottom: Pair the crop top with a flirty and stylish metallic pleated skirt. Opt for a mini or midi length, depending on your preference, creating an eye-catching look that is perfect for dancing.\n\nFootwear: Choose strappy heels in a complementary color like silver or gold. Look for designs that provide comfort and stability so you can dance all night long.\n\nAccessories:\n\nDainty layered necklaces with delicate pendants, adding a touch of elegance without overpowering your outfit.\nStatement earrings featuring geometric shapes or bold designs to add some drama to your look.\nA stack of sleek bracelets in silver or gold tones, enhancing the overall aesthetic of your ensemble.\nMakeup: Go for a glamorous makeup look with shimmery eyeshadows in neutral tones like bronze or champagne. Add winged eyeliner and voluminous lashes for extra impact. Complete the look with a bold lip color like red or berry.\n\n\nBag: Carry an embellished clutch bag with sequins or metallic accents that complements the colors of your outfit. This will add an extra touch of sparkle while providing convenience to carry essentials during the bachelor party celebration.";
+const temp=context;
+temp.push(
+
+    {"role": "user", "content": sample_prompt1},
+    {"role": "assistant", "content": sample_res1},
+    {"role": "user", "content": sample_updatereq1},
+    {"role": "assistant", "content": update_res1}
+)
 context.push(
     {"role": "user", "content": sample_prompt1},
     {"role": "assistant", "content": sample_res1},
@@ -26,4 +34,4 @@ context.push(
     {"role": "user", "content": sample_updatereq3},
     {"role": "assistant", "content": update_res3}
 )
-module.exports=context;
+module.exports={context, temp};

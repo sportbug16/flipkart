@@ -52,19 +52,13 @@ const Login = () => {
           },
         });
         const user=await response1.json();
-       // navigate('/main', { state: { data: user } }); // Pass the data as state */
+
         localStorage.setItem("username",user["username"]);
-        localStorage.setItem("HOME",'/main');
-        localStorage.setItem("Generate Questions",'/Gen');
-        localStorage.setItem("Problem Set",'/question-list');
-        localStorage.setItem("Problem","/question/:questiontype/:id");
-        localStorage.setItem("Solution",'"/sol/:questiontype/:id"');
-        localStorage.setItem("prevlink","");
-        localStorage.setItem("Visited Questions",'/vis');
-        localStorage.setItem("All Attempted Questions",'/allvis');
-        localStorage.setItem("Filtered Search","/specvis");
-        localStorage.setItem("Search using Title","/search");
         localStorage.setItem("email",user["email"]);
+
+        localStorage.setItem("HOME",'/main');
+
+        localStorage.setItem("prevlink","");
         //localStorage/setItem("HOME",'/main');
         setEmail('');
         setPassword('');

@@ -3,8 +3,8 @@ const Users = require("../models/usermodel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const register = asynchandler(async (req, res) => {
-  const { username, email, password } = req.body;
-  if (!username || !email || !password) {
+  const { username, email, password, age, location, gender } = req.body;
+  if (!username || !email || !password || !age || !gender || !location) {
     res.status(400).send("All fields are mandatory");
 
   }
@@ -14,9 +14,12 @@ const register = asynchandler(async (req, res) => {
   }
   const hashedpassword = await bcrypt.hash(password, 10);
   const added = await Users.create({
-    username: username,
-    email: email,
-    password: hashedpassword,
+        username: username,
+        email: email,
+        password: hashedpassword,
+      age: age,
+      gender: gender,
+      location: location
   });
   if (added) {
     res.status(200).send("Registration Successful. Redirecting...");
@@ -66,7 +69,7 @@ const logout = (req, res) => {
 };
 
 const update_profile = asynchandler(async (req, res) => {
-  const { username, email } = req.body;
+  const { username, email, age, gender, location } = req.body;
 
  try {
    // Find the user by their ID in the database
@@ -80,6 +83,9 @@ const update_profile = asynchandler(async (req, res) => {
    // Update the username and email
    user.username = username;
    user.email = email;
+   user.age = age;
+   user.location = location;
+   user.gender = gender;
    // console.log(user);
    // Save the updated user data to the database
    await user.save();
