@@ -36,7 +36,7 @@ const Chat = () => {
             .then((data) => {
                 msgs.push(data.output);
                 setChats(msgs);
-                setOutfitImages(data.images)
+                // setOutfitImages(data.images)
                 setIsGenerating(false);
                 scrollTo(0, 1e10);
             })
@@ -67,14 +67,14 @@ const Chat = () => {
                             </p>
                             {/* Display outfit images for bot messages */}
                             {/*{chat.role === "assistant" && (*/}
-                                <div className="outfit-images">
+                                {/* <div className="outfit-images">
                                     {Object.entries(outfitImages).map(([component, imageUrl], imgIndex) => (
                                         <div key={imgIndex} className="outfit-image">
                                             <h5>{component}</h5>
                                             {typeof imageUrl === 'string' && <img src={imageUrl} alt={`${component} outfit`} />}
                                         </div>
                                     ))}
-                                </div>
+                                </div> */}
                             {/*)}*/}
                         </div>
                             ))

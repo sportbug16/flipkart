@@ -5,7 +5,7 @@ const delay = require("../delay");
 const {Configuration, OpenAIApi} = require("openai");
 const {context, temp} = require("../apicalls/initial");
 const configuration = new Configuration({
-    apiKey: "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",
+    apiKey: process.env.API_KEY,
 });
 const Users = require('../models/usermodel');
 const openai = new OpenAIApi(configuration);
@@ -64,26 +64,27 @@ const generate_outfit2=asynchandler(async(req, res)=>{
         ],
     });
     chats.push(result.data.choices[0].message);
+    console.log(result.data.choices[0].message);
     const component_outfit = splitResponse(result.data.choices[0].message.content);
     console.log(component_outfit);
-    const imagePromises = Object.entries(component_outfit).map(async ([component, description]) => {
-        const imageUrl = await generate_image(description);
-        return { component, imageUrl };
-    });
-    let imageLinks;
-    try{
-        const imageResults = await Promise.all(imagePromises);
-        imageLinks = {};
-        imageResults.forEach(({component, imageUrl}) => {
-            imageLinks[component] = imageUrl;
-        });
-    }catch(error){
-        console.error("Error fetching images:", error);
-        return res.status(500).json({error: 'Failed to generate outfit images'});
-    }
+    // const imagePromises = Object.entries(component_outfit).map(async ([component, description]) => {
+    //     const imageUrl = await generate_image(description);
+    //     return { component, imageUrl };
+    // });
+    // let imageLinks;
+    // try{
+    //     const imageResults = await Promise.all(imagePromises);
+    //     imageLinks = {};
+    //     imageResults.forEach(({component, imageUrl}) => {
+    //         imageLinks[component] = imageUrl;
+    //     });
+    // }catch(error){
+    //     console.error("Error fetching images:", error);
+    //     return res.status(500).json({error: 'Failed to generate outfit images'});
+    // }
     res.json({
         output: result.data.choices[0].message,
-        images: imageLinks
+        // images: imageLinks
     });
 });
 
