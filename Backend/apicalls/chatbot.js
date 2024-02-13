@@ -2,7 +2,7 @@ const asynchandler = require("express-async-handler");
 const { Configuration, OpenAIApi } = require("openai");
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.API_KEY,
 });
 const {context}=require("./initial")
 const {current} = require("../controllers/usercontroller");
